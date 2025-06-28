@@ -2,14 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>#WARNING - 1</key>
-	<string>This is just a sample. Do NOT try loading it.</string>
-	<key>#WARNING - 2</key>
-	<string>Ensure you understand EVERY field before booting.</string>
-	<key>#WARNING - 3</key>
-	<string>In most cases recommended to use Sample.plist</string>
-	<key>#WARNING - 4</key>
-	<string>Use SampleCustom.plist only for special cases.</string>
+	<key># Computer Model</key>
+	<string>FUJITSU Desktop ESPRIMO Q956</string>
+	<key># CPU</key>
+	<string>Intel Core i5-6500T</string>
+	<key># GPU</key>
+	<string>Intel HD Graphics 530</string>
+	<key># OpenCore version</key>
+	<string>1.0.4</string>
 	<key>ACPI</key>
 	<dict>
 		<key>Add</key>
