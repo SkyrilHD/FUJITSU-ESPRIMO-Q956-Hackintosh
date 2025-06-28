@@ -1230,7 +1230,7 @@
 			<key>SecureBootModel</key>
 			<string>Disabled</string>
 			<key>Vault</key>
-			<string>Secure</string>
+			<string>Optional</string>
 		</dict>
 		<key>Serial</key>
 		<dict>
