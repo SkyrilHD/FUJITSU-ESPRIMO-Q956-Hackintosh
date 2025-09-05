@@ -267,7 +267,7 @@
 				<key>BundlePath</key>
 				<string>AirportItlwm.kext</string>
 				<key>Comment</key>
-				<string>AirportItlwm.kext</string>
+				<string>AirportItlwm.kext - Sonoma 14.4+</string>
 				<key>Enabled</key>
 				<true/>
 				<key>ExecutablePath</key>
