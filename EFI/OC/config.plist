@@ -256,6 +256,8 @@
 				<data>ElkAAA==</data>
 				<key>disable-agdc</key>
 				<data>AQAAAA==</data>
+				<key>enable-dpcd-max-link-rate-fix</key>
+				<data>AQAAAA==</data>
 			</dict>
 		</dict>
 		<key>Delete</key>
