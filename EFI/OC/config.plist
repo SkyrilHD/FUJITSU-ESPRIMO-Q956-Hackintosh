@@ -254,6 +254,8 @@
 				<data>AAASWQ==</data>
 				<key>device-id</key>
 				<data>ElkAAA==</data>
+				<key>disable-agdc</key>
+				<data>AQAAAA==</data>
 			</dict>
 		</dict>
 		<key>Delete</key>
