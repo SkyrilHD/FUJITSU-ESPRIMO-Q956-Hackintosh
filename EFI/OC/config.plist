@@ -278,6 +278,8 @@
 				<data>AQAAAA==</data>
 				<key>framebuffer-con3-alldata</key>
 				<data>BAAAAAEAAAAgAAAA</data>
+				<key>#framebuffer-patch-enable</key>
+				<data>AQAAAA==</data>
 			</dict>
 		</dict>
 		<key>Delete</key>
