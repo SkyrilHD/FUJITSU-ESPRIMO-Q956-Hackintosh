@@ -557,7 +557,7 @@
 				<key>ExecutablePath</key>
 				<string>Contents/MacOS/IntelMausi</string>
 				<key>MaxKernel</key>
-				<string></string>
+				<string>16.99.99</string>
 				<key>MinKernel</key>
 				<string></string>
 				<key>PlistPath</key>
