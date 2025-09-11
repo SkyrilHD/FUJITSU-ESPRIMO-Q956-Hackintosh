@@ -37,7 +37,7 @@ BIOS | R1.33.0 (09/29/2021)
 
 Go to the [Releases](https://github.com/SkyrilHD/FUJITSU-ESPRIMO-Q956-Hackintosh/releases/) page of this repo and download the latest release according to the macOS you want to install. Then, copy the EFI folder to your EFI partition... That's it.
 
-## Stuck on [EB|#LOG:EXITBS:START]
+## Stuck on `[EB|#LOG:EXITBS:START]`
 
 In the 'Graphics Configuration' section of the BIOS, do not set the 'DVMT Total Graphics Memory Size' to `MAX`. Instead, set it to `256 MB`.
 
@@ -94,4 +94,4 @@ Thanks to:
 - me (for wasting my time writing this and providing fixes)
 - acidanthera (for making an awesome bootloader)
 - dortania (for their guide)
-- zxystd (for fixing the Bluetooth issue and Intel WiFi card)
+- zxystd (for fixing Intel Bluetooth and WiFi)
