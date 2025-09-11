@@ -97,6 +97,10 @@ First, load your BIOS to the default settings. Then, apply the following BIOS se
 
 * Secure Boot Control: Disabled
 
+## Screenshot
+
+![About this Mac](https://github.com/user-attachments/assets/e13ac398-d0cf-4fdd-afc9-d81142357620)
+
 ## Credits
 
 Thanks to:
