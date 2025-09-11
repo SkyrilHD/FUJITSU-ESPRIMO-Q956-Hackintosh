@@ -29,7 +29,7 @@ BIOS | R1.33.0 (09/29/2021)
 
 ## Known Issues / not working
 
-- [ ] Sleep
+- [ ] Sleep (learn more: [Click](#sleep))
 - [ ] Hotplug
 - [ ] Multi-monitor output
 
@@ -50,6 +50,10 @@ OpenCore cannot find the DMAR table because VT-d is disabled. Enable VT-d in the
 The Ventura+ EFI includes AirportItlwm for Sonoma 14.4+. To use Intel WiFi on macOS Sequoia and newer, download [HeliPort](https://github.com/OpenIntelWireless/HeliPort/releases). For older macOS versions, replace the AirportItlwm kext according to your version of macOS. Here is the link to AirportItlwm: [Link](https://github.com/OpenIntelWireless/itlwm/releases)
 
 VT-d is supported but disabled in macOS due to issues with the network stack.
+
+## Sleep
+
+Sleep is a known issue with Skylake and Kaby Lake iGPUs. While the system can successfully enter sleep mode, it fails to wake up properly. When attempting to wake up the system, it ends up crashing and rebooting instead of resuming. There is currently no fix or patch available for this behavior. It is a hardware-level compatibility limitation.
 
 ## How to Install macOS Sequoia
 
