@@ -9,7 +9,7 @@
 	<key># GPU</key>
 	<string>Intel HD Graphics 530</string>
 	<key># OpenCore version</key>
-	<string>1.0.4</string>
+	<string>1.0.5</string>
 	<key>ACPI</key>
 	<dict>
 		<key>Add</key>
