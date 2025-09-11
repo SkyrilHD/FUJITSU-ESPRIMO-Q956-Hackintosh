@@ -79,6 +79,8 @@ First, load your BIOS to the default settings. Then, apply the following BIOS se
 
 * DVMT Shared Memory Size: 64 MB
 
+* DVMT Total Graphics Memory Size: 256 MB
+
 ***Security***
 
 **Secure Boot Configuration**
