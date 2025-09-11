@@ -32,3 +32,53 @@ jobs:
           file: Output/*.zip
           tag: ${{ github.ref }}
           file_glob: true
+
+  monterey:
+    name: Build (Monterey)
+    runs-on: macos-latest
+    steps:
+      - name: Build
+        uses: actions/checkout@v3
+      
+      - name: TAG_VER (release)
+        if: github.event_name == 'release'
+        run: echo "TAG_VER=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
+
+      - name: "Download latest AirportItlwm for Monterey"
+        uses: robinraju/release-downloader@v1.6
+        with:
+          repository: "OpenIntelWireless/itlwm"
+          latest: true
+          fileName: "*_Monterey.kext.zip"
+
+      # replace Sonoma AirportItlwm with Monterey
+      - run: rm -rf EFI/OC/Kexts/AirportItlwm.kext
+      - run: unzip *_Monterey.kext.zip
+      - run: mv AirportItlwm.kext EFI/OC/Kexts/
+
+      # use Skylake iGPU patches
+      - run: plutil -remove "DeviceProperties"."Add"."PciRoot(0x0)/Pci(0x2,0x0)".device-id EFI/OC/config.plist
+      - run: plutil -replace "DeviceProperties"."Add"."PciRoot(0x0)/Pci(0x2,0x0)".AAPL,ig-platform-id -data "BQA7GQ==" EFI/OC/config.plist
+      - run: plutil -remove "DeviceProperties"."Add"."PciRoot(0x0)/Pci(0x2,0x0)".force-online EFI/OC/config.plist
+
+      # fix AirportItlwm in config.plist
+      - run: plutil -replace "Kernel"."Add".0."Comment" -string "AirportItlwm.kext - Monterey" EFI/OC/config.plist
+      - run: plutil -replace "Kernel"."Add".0."MaxKernel" -string "21.99.99" EFI/OC/config.plist
+      - run: plutil -replace "Kernel"."Add".0."MinKernel" -string "21.0.0" EFI/OC/config.plist
+
+      - run: mkdir Output && zip --exclude '*.git*' --exclude '*.github*' --exclude '*Output*' --exclude '*Monterey*' -r -X "Output/${{ github.event.repository.name }}-${TAG_VER} (Monterey).zip" .
+      
+      - name: Upload to Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.event.repository.name }}-${TAG_VER} (Monterey)
+          path: Output/*.zip
+          
+      - name: Upload to Release
+        if: github.event_name == 'release'
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: Output/*.zip
+          tag: ${{ github.ref }}
+          file_glob: true
