@@ -45,6 +45,12 @@ In the 'Graphics Configuration' section of the BIOS, do not set the 'DVMT Total 
 
 OpenCore cannot find the DMAR table because VT-d is disabled. Enable VT-d in the 'CPU Configuration' section of the BIOS.
 
+## Intel WiFi
+
+The Ventura+ EFI includes AirportItlwm for Sonoma 14.4+. To use Intel WiFi on macOS Sequoia and newer, download [HeliPort](https://github.com/OpenIntelWireless/HeliPort/releases). For older macOS versions, replace the AirportItlwm kext according to your version of macOS. Here is the link to AirportItlwm: [Link](https://github.com/OpenIntelWireless/itlwm/releases)
+
+VT-d is supported but disabled in macOS due to issues with the network stack.
+
 ## How to Install macOS Sequoia
 
 There are two ways you can install Sequoia:
