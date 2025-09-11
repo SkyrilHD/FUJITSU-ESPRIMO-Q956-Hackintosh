@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  latest:
+    name: Build (Latest)
+    runs-on: macos-latest
+    steps:
+      - name: Build
+        uses: actions/checkout@v3
+      
+      - name: TAG_VER (release)
+        if: github.event_name == 'release'
+        run: echo "TAG_VER=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
+
+      - run: mkdir Output && zip --exclude '*.git*' --exclude '*.github*' --exclude '*Output*' -r -X "Output/${{ github.event.repository.name }}-${TAG_VER} (Ventura+).zip" .
+
+      - name: Upload to Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.event.repository.name }}-${TAG_VER} (Ventura+)
+          path: Output/*.zip
+          
+      - name: Upload to Release
+        if: github.event_name == 'release'
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: Output/*.zip
+          tag: ${{ github.ref }}
+          file_glob: true
