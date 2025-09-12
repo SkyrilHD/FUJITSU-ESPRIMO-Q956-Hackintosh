@@ -53,7 +53,7 @@ VT-d is supported but disabled in macOS due to issues with the network stack.
 
 ## Sleep
 
-Sleep is a known issue with Skylake and Kaby Lake iGPUs. While the system can successfully enter sleep mode, it fails to wake up properly. When attempting to wake up the system, it ends up crashing and rebooting instead of resuming. There is currently no fix or patch available for this behavior. It is a hardware-level compatibility limitation. As a workaround, this EFI uses hibernation to enable sleep.
+Sleep is a known issue with Skylake and Kaby Lake iGPUs. While the system can successfully enter sleep mode, it fails to wake up properly. When attempting to wake up the system, it ends up crashing and rebooting instead of resuming. There is currently no fix or patch available for this behavior. It is a hardware-level compatibility limitation. As a workaround, this EFI uses hibernation to enable sleep. However, due to the nature of hibernation, it takes noticeably longer to wake the computer compared to normal sleep because the system state must be restored from disk instead of being kept in memory.
 
 ## How to Install macOS Sequoia
 
