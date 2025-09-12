@@ -8,6 +8,8 @@ jobs:
   latest:
     name: Build (Latest)
     runs-on: macos-latest
+    permissions:
+      contents: write
     steps:
       - name: Build
         uses: actions/checkout@v3
@@ -32,6 +34,8 @@ jobs:
   monterey:
     name: Build (Monterey)
     runs-on: macos-latest
+    permissions:
+      contents: write
     steps:
       - name: Build
         uses: actions/checkout@v3
