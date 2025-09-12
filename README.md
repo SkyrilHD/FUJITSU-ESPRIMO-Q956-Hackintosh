@@ -26,10 +26,10 @@ BIOS | R1.33.0 (09/29/2021)
 - [x] GPU Acceleration
 - [x] USB
 - [x] WiFi/BT
+- [x] Sleep (learn more: [Click](#sleep))
 
 ## Known Issues / not working
 
-- [ ] Sleep (learn more: [Click](#sleep))
 - [ ] Hotplug
 - [ ] Multi-monitor output
 
@@ -53,7 +53,7 @@ VT-d is supported but disabled in macOS due to issues with the network stack.
 
 ## Sleep
 
-Sleep is a known issue with Skylake and Kaby Lake iGPUs. While the system can successfully enter sleep mode, it fails to wake up properly. When attempting to wake up the system, it ends up crashing and rebooting instead of resuming. There is currently no fix or patch available for this behavior. It is a hardware-level compatibility limitation.
+Sleep is a known issue with Skylake and Kaby Lake iGPUs. While the system can successfully enter sleep mode, it fails to wake up properly. When attempting to wake up the system, it ends up crashing and rebooting instead of resuming. There is currently no fix or patch available for this behavior. It is a hardware-level compatibility limitation. As a workaround, this EFI uses hibernation to enable sleep.
 
 ## How to Install macOS Sequoia
 
