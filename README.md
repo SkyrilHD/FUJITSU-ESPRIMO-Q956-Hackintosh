@@ -21,7 +21,7 @@ BIOS | R1.33.0 (09/29/2021)
 ## Working features
 
 - [x] Audio
-- [x] Boot
+- [x] Boot (learn more about internal boot: [Click](#download-and-install))
 - [x] Ethernet
 - [x] GPU Acceleration
 - [x] USB
@@ -36,6 +36,24 @@ BIOS | R1.33.0 (09/29/2021)
 ## Download and Install
 
 Go to the [Releases](https://github.com/SkyrilHD/FUJITSU-ESPRIMO-Q956-Hackintosh/releases/) page of this repo and download the latest release according to the macOS you want to install. Then, copy the EFI folder to your EFI partition... That's it.
+
+Some UEFI firmwares fail to detect the standard fallback bootloader (`EFI/BOOT/BOOTx64.efi`) when installed on an internal drive. As a result, you cannot boot OpenCore directly from the internal disk without manually adding a boot entry. On external drives, the firmware does recognize `BOOTx64.efi`, so OpenCore boots normally. The workaround is to manually create a UEFI boot entry within OpenCore’s built-in shell.
+
+1. Boot from the **external OpenCore USB**.
+
+2. Once in the OpenCore picker, press the spacebar to show extra tools and launch `OpenShell.efi`.
+
+3. In OpenShell, list all partitions with: `map -b`.
+
+4. Find the **internal disk’s EFI partition** with `ls fsX:\` (replace X with the partition number, e.g. fs0:\, fs1:\, etc.).
+
+5. Look for the `EFI` folder that contains `EFI\OC\OpenCore.efi`.
+
+6. Add a UEFI boot entry pointing to OpenCore: `bcfg boot add 3 fsX:\EFI\OC\OpenCore.efi "OpenCore"` (replace X with the correct partition number).
+
+7. Type `exit` to leave OpenShell. This returns you to the OpenCore menu.
+
+8. Shut down, unplug the USB, and reboot. Your system should now boot OpenCore from the internal drive.
 
 ## Stuck on `[EB|#LOG:EXITBS:START]`
 
