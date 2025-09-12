@@ -11,17 +11,13 @@ jobs:
     steps:
       - name: Build
         uses: actions/checkout@v3
-      
-      - name: TAG_VER (release)
-        if: github.event_name == 'release'
-        run: echo "TAG_VER=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
 
-      - run: mkdir Output && zip --exclude '*.git*' --exclude '*.github*' --exclude '*Output*' -r -X "Output/${{ github.event.repository.name }}-${TAG_VER} (Ventura+).zip" .
+      - run: mkdir Output && zip --exclude '*.git*' --exclude '*.github*' --exclude '*Output*' -r -X "Output/${{ github.event.repository.name }}-${{github.ref_name}} (Ventura+).zip" .
 
       - name: Upload to Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ github.event.repository.name }}-${TAG_VER} (Ventura+)
+          name: ${{ github.event.repository.name }}-${{github.ref_name}} (Ventura+)
           path: Output/*.zip
           
       - name: Upload to Release
@@ -39,10 +35,6 @@ jobs:
     steps:
       - name: Build
         uses: actions/checkout@v3
-      
-      - name: TAG_VER (release)
-        if: github.event_name == 'release'
-        run: echo "TAG_VER=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
 
       - name: "Download latest AirportItlwm for Monterey"
         uses: robinraju/release-downloader@v1.6
@@ -66,12 +58,12 @@ jobs:
       - run: plutil -replace "Kernel"."Add".0."MaxKernel" -string "21.99.99" EFI/OC/config.plist
       - run: plutil -replace "Kernel"."Add".0."MinKernel" -string "21.0.0" EFI/OC/config.plist
 
-      - run: mkdir Output && zip --exclude '*.git*' --exclude '*.github*' --exclude '*Output*' --exclude '*Monterey*' -r -X "Output/${{ github.event.repository.name }}-${TAG_VER} (Monterey).zip" .
-      
+      - run: mkdir Output && zip --exclude '*.git*' --exclude '*.github*' --exclude '*Output*' --exclude '*Monterey*' -r -X "Output/${{ github.event.repository.name }}-${{github.ref_name}} (Monterey).zip" .
+
       - name: Upload to Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ github.event.repository.name }}-${TAG_VER} (Monterey)
+          name: ${{ github.event.repository.name }}-${{github.ref_name}} (Monterey)
           path: Output/*.zip
           
       - name: Upload to Release
